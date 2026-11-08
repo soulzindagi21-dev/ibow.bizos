@@ -30,13 +30,31 @@ const vertex = /* glsl */ `
   vec3 pick(int i) { ${picks} return p0; }
   vec3 col(int i) { return uCols[i]; }
 
+  vec3 rotZ(vec3 p, float a) { float c = cos(a), s = sin(a); return vec3(c * p.x - s * p.y, s * p.x + c * p.y, p.z); }
+  vec3 rotY(vec3 p, float a) { float c = cos(a), s = sin(a); return vec3(c * p.x + s * p.z, p.y, -s * p.x + c * p.z); }
+
+  // Per-icon idle animation, applied to each particle of the icon at rest.
+  vec3 idle(int s, vec3 p, float t, float r) {
+    if (s == 0) return rotY(p, t * 0.05);                                        // dust drifts
+    if (s == 1) { p.y += 0.07 * sin(t * 2.2 + p.x * 3.0); return p; }            // bars ripple
+    if (s == 2) { p = rotZ(p, 0.06 * sin(t * 1.6)); p.y += 0.04 * sin(t * 3.0 + p.y * 2.0); return p; } // pencil writes
+    if (s == 3) { if (p.x > 0.7) p.x += 0.09 * sin(t * 4.0 - length(p.xy) * 4.0); return p; }  // sound waves pulse
+    if (s == 4) { if (length(p) > 1.1) return rotY(p, t * 0.9); return p; }  // satellites orbit
+    if (s == 5) { p.y += 0.06 * sin(t * 2.0 + p.x * 2.5); return p; }            // people bob
+    if (s == 6) return rotZ(p, t * 0.45);                                         // gear turns
+    if (s == 7) { return p * (1.0 + 0.035 * sin(t * 3.0)); }                      // warning pulses
+    if (s == 8) { p.y += 0.06 * sin(t * 3.0 - p.x * 3.0); return p; }             // path flows
+    if (s == 9) { p.y += 0.05 * sin(t * 1.6); p.x += 0.02 * sin(t * 1.1); return p; } // bubble floats
+    p.y += (p.y > -0.2 ? 0.045 : 0.0) * sin(t * 2.0 + p.x * 2.0); return p;       // bridge cables sway
+  }
+
   void main() {
     int i = int(floor(uT));
     int j = int(min(float(i + 1), ${N - 1}.0));
     float f = fract(uT);
     float k = smoothstep(0.0, 1.0, clamp((f - aRand * 0.3) / 0.7, 0.0, 1.0));
 
-    vec3 pos = mix(pick(i), pick(j), k);
+    vec3 pos = mix(idle(i, pick(i), uTime, aRand), idle(j, pick(j), uTime, aRand), k);
     float scatter = sin(3.14159 * k) * (0.9 + aRand * 1.5);
     vec3 dir = normalize(vec3(aRand - 0.5, fract(aRand * 7.3) - 0.5, fract(aRand * 13.1) - 0.5) + 0.0001);
     pos += dir * scatter;
@@ -48,10 +66,11 @@ const vertex = /* glsl */ `
 
     vec3 c = mix(col(i), col(j), k);
     // a small share of particles glow lighter for sparkle
-    float spark = step(0.93, fract(aRand * 91.7));
-    vColor = mix(c, vec3(1.0), spark * 0.55);
+    float spark = step(0.92, fract(aRand * 91.7));
+    float twinkle = 0.55 + 0.45 * sin(uTime * 3.0 + aRand * 60.0);
+    vColor = mix(c * 1.12, vec3(1.0), spark * twinkle * 0.7);
     float dust = (uT < 1.0) ? (1.0 - uT) : 0.0;
-    vAlpha = mix(0.85, 0.4, dust);
+    vAlpha = mix(0.95, 0.45, dust);
   }
 `
 
@@ -62,7 +81,7 @@ const fragment = /* glsl */ `
   void main() {
     float d = length(gl_PointCoord - 0.5);
     if (d > 0.5) discard;
-    gl_FragColor = vec4(vColor, smoothstep(0.5, 0.15, d) * vAlpha);
+    gl_FragColor = vec4(vColor, smoothstep(0.5, 0.1, d) * vAlpha);
   }
 `
 
@@ -75,7 +94,7 @@ export function initScene(mount) {
     return // no WebGL: the page still works without the background
   }
   const mobile = window.innerWidth < 768
-  const count = mobile ? 12000 : 24000
+  const count = mobile ? 20000 : 42000
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   renderer.setClearColor(0x000000, 0)
   mount.appendChild(renderer.domElement)
@@ -102,7 +121,7 @@ export function initScene(mount) {
     uniforms: {
       uT: { value: 0 },
       uTime: { value: 0 },
-      uSize: { value: mobile ? 15 : 12 },
+      uSize: { value: mobile ? 16 : 14 },
       uPixel: { value: renderer.getPixelRatio() },
       uCols: { value: cols },
     },
