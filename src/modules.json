@@ -1,0 +1,141 @@
+[
+  {
+    "id": "ledgerlogic",
+    "name": "LedgerLogic",
+    "category": "Finance Intelligence",
+    "line": "Finance that connects every decision.",
+    "capabilities": [
+      "Invoices",
+      "Cashflow",
+      "Reports",
+      "Financial intelligence"
+    ],
+    "accent": "#38e1ff",
+    "glyph": "ledger"
+  },
+  {
+    "id": "designforge",
+    "name": "DesignForge",
+    "category": "Design Intelligence",
+    "line": "Design systems built for business momentum.",
+    "capabilities": [
+      "Brand systems",
+      "UI assets",
+      "Campaign visuals",
+      "Design workflows"
+    ],
+    "accent": "#7c5cff",
+    "glyph": "design"
+  },
+  {
+    "id": "marketpulse",
+    "name": "MarketPulse",
+    "category": "Marketing Intelligence",
+    "line": "Marketing that reads the market before it moves.",
+    "capabilities": [
+      "Audience signals",
+      "Campaign insights",
+      "Trend intelligence",
+      "Growth opportunities"
+    ],
+    "accent": "#ff5ca8",
+    "glyph": "market"
+  },
+  {
+    "id": "clientorbit",
+    "name": "ClientOrbit",
+    "category": "CRM / Relationship Intelligence",
+    "line": "Every customer signal in one orbit.",
+    "capabilities": [
+      "Leads",
+      "CRM journeys",
+      "Account growth",
+      "Relationship intelligence"
+    ],
+    "accent": "#38ffd0",
+    "glyph": "client"
+  },
+  {
+    "id": "peoplegrid",
+    "name": "PeopleGrid",
+    "category": "HR / People Intelligence",
+    "line": "Teams, roles, and workflows aligned.",
+    "capabilities": [
+      "HR workflows",
+      "Roles",
+      "Access",
+      "Team performance"
+    ],
+    "accent": "#6aa8ff",
+    "glyph": "people"
+  },
+  {
+    "id": "opspilot",
+    "name": "OpsPilot",
+    "category": "Operations Intelligence",
+    "line": "Operations guided from chaos to clarity.",
+    "capabilities": [
+      "Tasks",
+      "Delivery",
+      "Resources",
+      "Execution cockpit"
+    ],
+    "accent": "#f4c45a",
+    "glyph": "ops"
+  },
+  {
+    "id": "riskradar",
+    "name": "RiskRadar",
+    "category": "Risk Intelligence",
+    "line": "Risks detected before they become decisions.",
+    "capabilities": [
+      "Risk scanning",
+      "Safe paths",
+      "Alerts",
+      "Mitigation"
+    ],
+    "accent": "#ff7a5c",
+    "glyph": "risk"
+  },
+  {
+    "id": "simupath",
+    "name": "SimuPath",
+    "category": "Simulation Intelligence",
+    "line": "Simulate outcomes before you commit.",
+    "capabilities": [
+      "Scenario modelling",
+      "Outcome prediction",
+      "Strategic path selection"
+    ],
+    "accent": "#9b8cff",
+    "glyph": "simu"
+  },
+  {
+    "id": "supportsync",
+    "name": "SupportSync",
+    "category": "Support Intelligence",
+    "line": "Support that stays connected to the whole business.",
+    "capabilities": [
+      "Tickets",
+      "Chats",
+      "Workflows",
+      "Resolution intelligence"
+    ],
+    "accent": "#38e1ff",
+    "glyph": "support"
+  },
+  {
+    "id": "vendorbridge",
+    "name": "VendorBridge",
+    "category": "Vendor Intelligence",
+    "line": "Vendors, contracts, and delivery connected.",
+    "capabilities": [
+      "Suppliers",
+      "Contracts",
+      "Approvals",
+      "Supply pathways"
+    ],
+    "accent": "#5ce0a8",
+    "glyph": "vendor"
+  }
+]
