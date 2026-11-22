@@ -1,0 +1,6 @@
+{
+  "source": "Suno speech 'iBow Business OS Tour - Narration (male)' (6c558553-fbbd-4b23-bbd6-cf8b9f973067)",
+  "note": "First-word start and last-word end of each paragraph, from Suno's word alignment of the narration.",
+  "spans": [[0.295, 9.131], [10.803, 19.88], [21.405, 29.787], [31.602, 40.446], [41.716, 52.718], [54.308, 61.106],
+            [62.858, 71.004], [73.06, 83.036], [84.974, 92.783], [94.203, 101.991], [104.104, 116.004], [118.993, 128.406]]
+}

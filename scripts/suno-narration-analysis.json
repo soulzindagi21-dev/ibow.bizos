@@ -1,0 +1,872 @@
+{
+"source": "Suno audio-analysis of the narration (male 1), 6c558553-fbbd-4b23-bbd6-cf8b9f973067",
+"bpm": 98,
+"time_signature": 4,
+"duration_s": 132.04,
+"beats": [
+{
+"time_s": 0.32667,
+"bar_position": 1
+},
+{
+"time_s": 0.92473,
+"bar_position": 2
+},
+{
+"time_s": 1.52252,
+"bar_position": 3
+},
+{
+"time_s": 2.12019,
+"bar_position": 4
+},
+{
+"time_s": 2.71792,
+"bar_position": 1
+},
+{
+"time_s": 3.31562,
+"bar_position": 2
+},
+{
+"time_s": 3.91338,
+"bar_position": 3
+},
+{
+"time_s": 4.5111,
+"bar_position": 4
+},
+{
+"time_s": 5.109,
+"bar_position": 1
+},
+{
+"time_s": 5.70615,
+"bar_position": 2
+},
+{
+"time_s": 6.30431,
+"bar_position": 3
+},
+{
+"time_s": 6.90321,
+"bar_position": 4
+},
+{
+"time_s": 7.50212,
+"bar_position": 1
+},
+{
+"time_s": 8.10162,
+"bar_position": 2
+},
+{
+"time_s": 8.7014,
+"bar_position": 3
+},
+{
+"time_s": 9.30208,
+"bar_position": 4
+},
+{
+"time_s": 9.90216,
+"bar_position": 1
+},
+{
+"time_s": 10.50274,
+"bar_position": 2
+},
+{
+"time_s": 11.10302,
+"bar_position": 3
+},
+{
+"time_s": 11.70367,
+"bar_position": 1
+},
+{
+"time_s": 12.30452,
+"bar_position": 1
+},
+{
+"time_s": 12.90507,
+"bar_position": 2
+},
+{
+"time_s": 13.50592,
+"bar_position": 3
+},
+{
+"time_s": 14.10665,
+"bar_position": 4
+},
+{
+"time_s": 14.70671,
+"bar_position": 1
+},
+{
+"time_s": 15.3075,
+"bar_position": 2
+},
+{
+"time_s": 15.90792,
+"bar_position": 3
+},
+{
+"time_s": 16.50917,
+"bar_position": 1
+},
+{
+"time_s": 17.10912,
+"bar_position": 1
+},
+{
+"time_s": 17.71044,
+"bar_position": 2
+},
+{
+"time_s": 18.31149,
+"bar_position": 3
+},
+{
+"time_s": 18.91275,
+"bar_position": 4
+},
+{
+"time_s": 19.5134,
+"bar_position": 1
+},
+{
+"time_s": 20.11542,
+"bar_position": 2
+},
+{
+"time_s": 20.71608,
+"bar_position": 3
+},
+{
+"time_s": 21.31778,
+"bar_position": 4
+},
+{
+"time_s": 21.91919,
+"bar_position": 1
+},
+{
+"time_s": 22.52064,
+"bar_position": 2
+},
+{
+"time_s": 23.12165,
+"bar_position": 3
+},
+{
+"time_s": 23.72373,
+"bar_position": 4
+},
+{
+"time_s": 24.32545,
+"bar_position": 1
+},
+{
+"time_s": 24.92729,
+"bar_position": 2
+},
+{
+"time_s": 25.52923,
+"bar_position": 3
+},
+{
+"time_s": 26.13134,
+"bar_position": 4
+},
+{
+"time_s": 26.73358,
+"bar_position": 1
+},
+{
+"time_s": 27.33583,
+"bar_position": 2
+},
+{
+"time_s": 27.9375,
+"bar_position": 3
+},
+{
+"time_s": 28.54027,
+"bar_position": 4
+},
+{
+"time_s": 29.14235,
+"bar_position": 1
+},
+{
+"time_s": 29.74549,
+"bar_position": 2
+},
+{
+"time_s": 30.34898,
+"bar_position": 3
+},
+{
+"time_s": 30.9529,
+"bar_position": 4
+},
+{
+"time_s": 31.55723,
+"bar_position": 1
+},
+{
+"time_s": 32.16065,
+"bar_position": 2
+},
+{
+"time_s": 32.76481,
+"bar_position": 3
+},
+{
+"time_s": 33.3685,
+"bar_position": 4
+},
+{
+"time_s": 33.97276,
+"bar_position": 1
+},
+{
+"time_s": 34.57733,
+"bar_position": 2
+},
+{
+"time_s": 35.18296,
+"bar_position": 3
+},
+{
+"time_s": 35.78892,
+"bar_position": 4
+},
+{
+"time_s": 36.39547,
+"bar_position": 1
+},
+{
+"time_s": 37.00204,
+"bar_position": 2
+},
+{
+"time_s": 37.60829,
+"bar_position": 3
+},
+{
+"time_s": 38.21462,
+"bar_position": 4
+},
+{
+"time_s": 38.82114,
+"bar_position": 1
+},
+{
+"time_s": 39.42742,
+"bar_position": 2
+},
+{
+"time_s": 40.03377,
+"bar_position": 3
+},
+{
+"time_s": 40.64008,
+"bar_position": 4
+},
+{
+"time_s": 41.24625,
+"bar_position": 1
+},
+{
+"time_s": 41.85219,
+"bar_position": 2
+},
+{
+"time_s": 42.459,
+"bar_position": 3
+},
+{
+"time_s": 43.06556,
+"bar_position": 4
+},
+{
+"time_s": 43.67212,
+"bar_position": 1
+},
+{
+"time_s": 44.27892,
+"bar_position": 2
+},
+{
+"time_s": 44.88562,
+"bar_position": 3
+},
+{
+"time_s": 45.4925,
+"bar_position": 4
+},
+{
+"time_s": 46.09948,
+"bar_position": 1
+},
+{
+"time_s": 46.70656,
+"bar_position": 2
+},
+{
+"time_s": 47.31362,
+"bar_position": 3
+},
+{
+"time_s": 47.92067,
+"bar_position": 4
+},
+{
+"time_s": 48.52738,
+"bar_position": 1
+},
+{
+"time_s": 49.1349,
+"bar_position": 2
+},
+{
+"time_s": 49.7419,
+"bar_position": 3
+},
+{
+"time_s": 50.3489,
+"bar_position": 4
+},
+{
+"time_s": 50.95641,
+"bar_position": 1
+},
+{
+"time_s": 51.56404,
+"bar_position": 2
+},
+{
+"time_s": 52.1725,
+"bar_position": 3
+},
+{
+"time_s": 52.78102,
+"bar_position": 4
+},
+{
+"time_s": 53.38977,
+"bar_position": 1
+},
+{
+"time_s": 53.99888,
+"bar_position": 2
+},
+{
+"time_s": 54.60835,
+"bar_position": 3
+},
+{
+"time_s": 55.21723,
+"bar_position": 4
+},
+{
+"time_s": 55.82606,
+"bar_position": 1
+},
+{
+"time_s": 56.43535,
+"bar_position": 2
+},
+{
+"time_s": 57.04392,
+"bar_position": 3
+},
+{
+"time_s": 57.6534,
+"bar_position": 4
+},
+{
+"time_s": 58.26181,
+"bar_position": 1
+},
+{
+"time_s": 58.87094,
+"bar_position": 2
+},
+{
+"time_s": 59.48047,
+"bar_position": 3
+},
+{
+"time_s": 60.0906,
+"bar_position": 4
+},
+{
+"time_s": 60.70025,
+"bar_position": 1
+},
+{
+"time_s": 61.31027,
+"bar_position": 2
+},
+{
+"time_s": 61.92013,
+"bar_position": 3
+},
+{
+"time_s": 62.53008,
+"bar_position": 4
+},
+{
+"time_s": 63.14057,
+"bar_position": 1
+},
+{
+"time_s": 63.75162,
+"bar_position": 2
+},
+{
+"time_s": 64.36283,
+"bar_position": 3
+},
+{
+"time_s": 64.97496,
+"bar_position": 4
+},
+{
+"time_s": 65.58691,
+"bar_position": 1
+},
+{
+"time_s": 66.19871,
+"bar_position": 2
+},
+{
+"time_s": 66.81081,
+"bar_position": 3
+},
+{
+"time_s": 67.42277,
+"bar_position": 4
+},
+{
+"time_s": 68.03501,
+"bar_position": 1
+},
+{
+"time_s": 68.64744,
+"bar_position": 2
+},
+{
+"time_s": 69.26036,
+"bar_position": 3
+},
+{
+"time_s": 69.87321,
+"bar_position": 4
+},
+{
+"time_s": 70.48606,
+"bar_position": 1
+},
+{
+"time_s": 71.09881,
+"bar_position": 2
+},
+{
+"time_s": 71.7115,
+"bar_position": 3
+},
+{
+"time_s": 72.32504,
+"bar_position": 4
+},
+{
+"time_s": 72.93777,
+"bar_position": 1
+},
+{
+"time_s": 73.55115,
+"bar_position": 2
+},
+{
+"time_s": 74.16342,
+"bar_position": 3
+},
+{
+"time_s": 74.77644,
+"bar_position": 4
+},
+{
+"time_s": 75.38904,
+"bar_position": 1
+},
+{
+"time_s": 76.00242,
+"bar_position": 2
+},
+{
+"time_s": 76.61527,
+"bar_position": 3
+},
+{
+"time_s": 77.2281,
+"bar_position": 4
+},
+{
+"time_s": 77.84091,
+"bar_position": 1
+},
+{
+"time_s": 78.45375,
+"bar_position": 2
+},
+{
+"time_s": 79.06647,
+"bar_position": 3
+},
+{
+"time_s": 79.6794,
+"bar_position": 4
+},
+{
+"time_s": 80.29235,
+"bar_position": 1
+},
+{
+"time_s": 80.90596,
+"bar_position": 2
+},
+{
+"time_s": 81.52037,
+"bar_position": 3
+},
+{
+"time_s": 82.13449,
+"bar_position": 4
+},
+{
+"time_s": 82.74867,
+"bar_position": 1
+},
+{
+"time_s": 83.3631,
+"bar_position": 2
+},
+{
+"time_s": 83.97717,
+"bar_position": 3
+},
+{
+"time_s": 84.59152,
+"bar_position": 4
+},
+{
+"time_s": 85.20594,
+"bar_position": 1
+},
+{
+"time_s": 85.82044,
+"bar_position": 2
+},
+{
+"time_s": 86.43525,
+"bar_position": 3
+},
+{
+"time_s": 87.04965,
+"bar_position": 4
+},
+{
+"time_s": 87.66444,
+"bar_position": 1
+},
+{
+"time_s": 88.27975,
+"bar_position": 2
+},
+{
+"time_s": 88.89515,
+"bar_position": 3
+},
+{
+"time_s": 89.5106,
+"bar_position": 4
+},
+{
+"time_s": 90.1265,
+"bar_position": 1
+},
+{
+"time_s": 90.74269,
+"bar_position": 2
+},
+{
+"time_s": 91.35925,
+"bar_position": 3
+},
+{
+"time_s": 91.97542,
+"bar_position": 4
+},
+{
+"time_s": 92.59138,
+"bar_position": 1
+},
+{
+"time_s": 93.20833,
+"bar_position": 2
+},
+{
+"time_s": 93.82442,
+"bar_position": 3
+},
+{
+"time_s": 94.44138,
+"bar_position": 4
+},
+{
+"time_s": 95.05827,
+"bar_position": 1
+},
+{
+"time_s": 95.67473,
+"bar_position": 2
+},
+{
+"time_s": 96.29171,
+"bar_position": 3
+},
+{
+"time_s": 96.90888,
+"bar_position": 4
+},
+{
+"time_s": 97.526,
+"bar_position": 1
+},
+{
+"time_s": 98.14317,
+"bar_position": 2
+},
+{
+"time_s": 98.7609,
+"bar_position": 3
+},
+{
+"time_s": 99.37858,
+"bar_position": 4
+},
+{
+"time_s": 99.99605,
+"bar_position": 1
+},
+{
+"time_s": 100.61364,
+"bar_position": 2
+},
+{
+"time_s": 101.23123,
+"bar_position": 3
+},
+{
+"time_s": 101.84812,
+"bar_position": 4
+},
+{
+"time_s": 102.46576,
+"bar_position": 1
+},
+{
+"time_s": 103.0829,
+"bar_position": 2
+},
+{
+"time_s": 103.69915,
+"bar_position": 3
+},
+{
+"time_s": 104.31638,
+"bar_position": 4
+},
+{
+"time_s": 104.93271,
+"bar_position": 1
+},
+{
+"time_s": 105.54913,
+"bar_position": 2
+},
+{
+"time_s": 106.16579,
+"bar_position": 3
+},
+{
+"time_s": 106.78221,
+"bar_position": 4
+},
+{
+"time_s": 107.39844,
+"bar_position": 1
+},
+{
+"time_s": 108.01492,
+"bar_position": 2
+},
+{
+"time_s": 108.63192,
+"bar_position": 3
+},
+{
+"time_s": 109.24806,
+"bar_position": 4
+},
+{
+"time_s": 109.86481,
+"bar_position": 1
+},
+{
+"time_s": 110.48196,
+"bar_position": 2
+},
+{
+"time_s": 111.09912,
+"bar_position": 3
+},
+{
+"time_s": 111.71658,
+"bar_position": 4
+},
+{
+"time_s": 112.33479,
+"bar_position": 1
+},
+{
+"time_s": 112.95384,
+"bar_position": 2
+},
+{
+"time_s": 113.57441,
+"bar_position": 3
+},
+{
+"time_s": 114.19606,
+"bar_position": 4
+},
+{
+"time_s": 114.81952,
+"bar_position": 1
+},
+{
+"time_s": 115.44406,
+"bar_position": 2
+},
+{
+"time_s": 116.06983,
+"bar_position": 3
+},
+{
+"time_s": 116.69698,
+"bar_position": 4
+},
+{
+"time_s": 117.32561,
+"bar_position": 1
+},
+{
+"time_s": 117.95512,
+"bar_position": 2
+},
+{
+"time_s": 118.58564,
+"bar_position": 3
+},
+{
+"time_s": 119.2174,
+"bar_position": 4
+},
+{
+"time_s": 119.84966,
+"bar_position": 1
+},
+{
+"time_s": 120.48318,
+"bar_position": 2
+},
+{
+"time_s": 121.11769,
+"bar_position": 3
+},
+{
+"time_s": 121.75321,
+"bar_position": 4
+},
+{
+"time_s": 122.38972,
+"bar_position": 1
+},
+{
+"time_s": 123.02748,
+"bar_position": 2
+},
+{
+"time_s": 123.66575,
+"bar_position": 3
+},
+{
+"time_s": 124.30385,
+"bar_position": 4
+},
+{
+"time_s": 124.94279,
+"bar_position": 1
+},
+{
+"time_s": 125.58167,
+"bar_position": 2
+},
+{
+"time_s": 126.21983,
+"bar_position": 3
+},
+{
+"time_s": 126.85835,
+"bar_position": 4
+},
+{
+"time_s": 127.49687,
+"bar_position": 1
+},
+{
+"time_s": 128.13539,
+"bar_position": 2
+},
+{
+"time_s": 128.77391,
+"bar_position": 3
+},
+{
+"time_s": 129.41243,
+"bar_position": 4
+},
+{
+"time_s": 130.05095,
+"bar_position": 5
+},
+{
+"time_s": 130.6891,
+"bar_position": 6
+},
+{
+"time_s": 131.32827,
+"bar_position": 7
+},
+{
+"time_s": 131.96633,
+"bar_position": 8
+}
+]
+}

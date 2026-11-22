@@ -1,80 +1,70 @@
 /*
- * Auto-scroll tour synced to the music.
+ * Narrated auto-scroll tour.
  *
- * The track's beat map (src/tour/beats.json, made by scripts/analyze_beats.py) gives the
- * downbeats and how loud each bar is. We plan the tour on that grid:
- *   - every stop (logo, 10 modules, logo) finishes forming exactly on a downbeat;
- *   - loud bars get a quick one-bar transition, quiet bars a slower glide, so the scroll
- *     speed follows the music;
- *   - the audio element's clock drives the scroll, so the picture can't drift from the sound;
+ * The soundtrack (public/tour/track.mp3, made in Suno) is a voice-over with its own music bed.
+ * The cue sheet (src/tour/cues.json, from scripts/build_tour_cues.py) says when the narrator
+ * starts and finishes each stop's paragraph, and where the bed's beats and downbeats fall.
+ *   - each stop stays on screen for as long as its paragraph takes;
+ *   - in the pause before the next paragraph the page moves on, and the next shape finishes
+ *     forming on the downbeat (or beat) nearest to the moment the narrator says its name;
+ *   - the audio element's clock drives the scroll, so picture and voice can't drift apart;
  *   - the particles pulse on every beat, harder on the downbeat.
  * Any wheel, touch or key press hands control back to the visitor.
  */
-import beatMap from './tour/beats.json'
+import cues from './tour/cues.json'
 import { HOLD, sync } from './sync.js'
 
-const TARGET_SECONDS = 60
-const OUTRO_BARS = 2
+const LEAD = 0.1        // land this long before the narrator starts the paragraph
+const ON_TIME = 0.05    // ...and always at least this long before it: the shape is whole when its name is said
+const EARLY_DEPART = 0.3 // a move may start during the last syllable of the previous paragraph
+const MIN_TRAVEL = 0.9  // shortest move, in seconds
+const MAX_TRAVEL = 2.4  // longest move
+const SETTLE = 0.35     // after landing, glide the last few pixels to rest over this long
+const DOWNBEAT_REACH = 0.5 // a downbeat this close to the cue beats a closer ordinary beat
 
-// Moves accelerate INTO the landing downbeat, so the shape snaps together on the beat
-// (a decelerating ease would let it finish early and drift in). After the hit, the page
-// glides the last few pixels to rest.
-const rush = (x) => x * x * x                                   // loud bars: sharp rush into the hit
-const swell = (x) => 0.5 * (1 - Math.cos((Math.PI * x) / 2)) + 0.5 * x * x // quiet bars: gentle swell
+// Moves accelerate INTO the landing beat, so the shape snaps together on the hit
+// (a decelerating ease would let it finish early and drift in).
+const rush = (x) => x * x * x                                               // short moves
+const swell = (x) => 0.5 * (1 - Math.cos((Math.PI * x) / 2)) + 0.5 * x * x // longer glides
 const easeOutQuad = (x) => 1 - (1 - x) * (1 - x)
 
-/**
- * Build the timeline: for each of the 11 moves, when it departs, when it lands (always a
- * downbeat) and how it eases.
- *
- * Landings are spread evenly over the bars between the start and the finale. If the beat map
- * has `finaleAt` (the song's outro), the closing logo lands there and the song plays out on it;
- * otherwise the tour aims for TARGET_SECONDS and fades the music after a short outro.
- * A move departs early (a two-bar glide) in the song's quieter bars and late (a one-bar rush)
- * in its louder ones, measured against the song's own median loudness.
- */
-export function planTour(map, stops) {
-  const db = map.downbeats
-  const barDur = db.length > 1 ? (db[db.length - 1] - db[0]) / (db.length - 1) : 2
-  const moves = stops - 1
-  const nearestBar = (t) => db.reduce((best, d, i) => (Math.abs(d - t) < Math.abs(db[best] - t) ? i : best), 0)
-  const finaleBar = map.finaleAt != null
-    ? nearestBar(map.finaleAt)
-    : Math.min(db.length - 1 - OUTRO_BARS, Math.round(TARGET_SECONDS / barDur) - OUTRO_BARS)
-
-  const energy = map.barEnergy.slice(0, finaleBar)
-  const median = [...energy].sort((a, b) => a - b)[Math.floor(energy.length / 2)] ?? 0.5
-  const loudAt = (b) => (map.barEnergy[b] ?? median) >= median
-
-  const out = []
-  let prevLand = 0 // the hero logo is "landed" on the first downbeat
-  for (let m = 0; m < moves; m++) {
-    const land = Math.round(((m + 1) * finaleBar) / moves)
-    const slot = Math.max(1, land - prevLand)
-    const loud = loudAt(land - 1)
-    const travel = Math.min(slot, Math.max(1, Math.round(slot * (loud ? 0.35 : 0.65))))
-    out.push({ from: m, to: m + 1, startBar: land - travel, landBar: land, loud })
-    prevLand = land
+/** For each move: when it departs, when it lands (on a beat by the narrator's cue) and how it eases. */
+export function planTour(c, stops) {
+  const paras = c.paragraphs
+  const pick = (list, lo, hi, ideal) => {
+    const inWindow = list.filter((t) => t >= lo && t <= hi)
+    return inWindow.length ? inWindow.reduce((a, b) => (Math.abs(b - ideal) < Math.abs(a - ideal) ? b : a)) : null
   }
-  const barTime = (b) => (b < db.length ? db[b] : db[db.length - 1] + (b - db.length + 1) * barDur)
-  return {
-    moves: out.map((m) => ({ ...m, t0: barTime(m.startBar), t1: barTime(m.landBar), ease: m.loud ? rush : swell })),
-    end: map.finaleAt != null ? map.duration - 0.05 : Math.min(barTime(finaleBar + OUTRO_BARS), map.duration),
-    barDur,
-    naturalEnd: map.finaleAt != null,
+  const moves = []
+  for (let k = 1; k < stops; k++) {
+    const prevEnd = paras[k - 1].end
+    const start = paras[k].start
+    const ideal = start - LEAD
+    const lo = prevEnd - EARLY_DEPART + MIN_TRAVEL
+    const hi = start - ON_TIME
+    // prefer a downbeat if one is close to the cue, otherwise the nearest beat
+    const down = pick(c.downbeats, Math.max(lo, ideal - DOWNBEAT_REACH), Math.min(hi, ideal + DOWNBEAT_REACH), ideal)
+    const land = down ?? pick(c.beats, lo, hi, ideal) ?? Math.max(lo, ideal)
+    let depart = Math.max(prevEnd - EARLY_DEPART, land - MAX_TRAVEL)
+    if (land - depart < MIN_TRAVEL) depart = land - MIN_TRAVEL
+    moves.push({
+      from: k - 1, to: k, t0: depart, t1: land,
+      onDownbeat: c.downbeats.includes(land), onBeat: c.beats.includes(land),
+      ease: land - depart < 1.5 ? rush : swell,
+    })
   }
+  return { moves, end: c.duration - 0.05 }
 }
 
 export function setupTour({ audio, buttons, progress, panels }) {
-  // While the track is still the test click track, keep the tour hidden on the live site.
-  // It can be previewed by adding ?tour to the URL.
-  if (beatMap.placeholder && !new URLSearchParams(location.search).has('tour')) {
+  // A placeholder soundtrack keeps the tour hidden on the live site (preview with ?tour).
+  if (cues.placeholder && !new URLSearchParams(location.search).has('tour')) {
     buttons.forEach((b) => { b.hidden = true })
     return null
   }
-  const plan = planTour(beatMap, panels.length)
-  const beats = beatMap.beats
-  const downs = new Set(beatMap.downbeats.map((t) => t.toFixed(3)))
+  const plan = planTour(cues, panels.length)
+  const beats = cues.beats
+  const downs = new Set(cues.downbeats.map((t) => t.toFixed(3)))
   let playing = false, raf = 0, beatIdx = 0
   let lastAudioT = -1, lastPerf = 0
 
@@ -95,7 +85,7 @@ export function setupTour({ audio, buttons, progress, panels }) {
       const m = mv[n], next = mv[n + 1]
       if (t < m.t1) return { from: m.from, to: m.to, frac: (1 - HOLD) * m.ease((t - m.t0) / (m.t1 - m.t0)) }
       if (!next || t < next.t0) {
-        const s = Math.min(1, (t - m.t1) / (plan.barDur / 4))
+        const s = Math.min(1, (t - m.t1) / SETTLE)
         return { from: m.from, to: m.to, frac: 1 - HOLD + HOLD * easeOutQuad(s) }
       }
     }
@@ -163,7 +153,7 @@ export function setupTour({ audio, buttons, progress, panels }) {
     setUi(false)
     if (progress) progress.style.transform = 'scaleX(0)'
     // fade the music out rather than cutting it
-    const v0 = audio.volume, t0 = performance.now(), len = finished ? (plan.naturalEnd ? 200 : 1500) : 500
+    const v0 = audio.volume, t0 = performance.now(), len = finished ? 200 : 500
     const fade = () => {
       const k = Math.min(1, (performance.now() - t0) / len)
       audio.volume = v0 * (1 - k)

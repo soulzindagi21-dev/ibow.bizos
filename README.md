@@ -10,24 +10,26 @@ npm run build   # production build to dist/
 
 The scene lives in `src/scene.js`: each shape is sampled into the same number of surface points, and the vertex shader blends between shapes as you scroll.
 
-## Music tour
+## Narrated tour
 
-"Play tour" plays `public/tour/track.mp3` ("iBow Business OS Tour", made in Suno) and scrolls
-the page in time with it: every shape finishes forming on a downbeat, the song's louder bars
-get quick one-bar rushes and its quieter bars two-bar glides, the closing logo lands on the
-song's outro, and the particles pulse on the beat. Any wheel, touch or key press stops it.
+"Play tour" plays `public/tour/track.mp3`, a voice-over made in Suno (a male tech presenter
+over a ~98 BPM music bed, script in `src/tour/narration.json`), and scrolls the page in time
+with it:
 
-The beat grid comes from Suno's own analysis of the song (`scripts/suno-analysis.json`: every
-beat with its position in the bar, plus the song's sections). To use a new track:
+- each module stays on screen for as long as the narrator talks about it;
+- in the pause before the next paragraph the page moves on, and the next shape finishes
+  forming on a beat (a downbeat where one is close) just before the narrator says its name;
+- the particles pulse on the beat; any wheel, touch or key press stops the tour.
+
+The timing lives in `src/tour/cues.json`, built from two Suno outputs for the track:
 
 ```bash
-pip install librosa soundfile
-cp path/to/song.mp3 public/tour/track.mp3
-# with Suno's audio-analysis saved as JSON (recommended):
-python scripts/analyze_beats.py public/tour/track.mp3 src/tour/beats.json --suno path/to/analysis.json
-# or detect the beats from the audio alone:
-python scripts/analyze_beats.py public/tour/track.mp3 src/tour/beats.json
+python scripts/build_tour_cues.py scripts/narration-spans.json scripts/suno-narration-analysis.json src/tour/cues.json
 ```
 
-If `beats.json` is marked `"placeholder": true`, the tour buttons are hidden unless the URL has
-`?tour`.
+- `scripts/narration-spans.json`: each paragraph's first-word start and last-word end, from
+  Suno's word alignment of the narration;
+- `scripts/suno-narration-analysis.json`: Suno's audio-analysis (every beat and its bar position).
+
+To change the script, regenerate the narration in Suno, replace `track.mp3`, update both
+files from the new clip's alignment and analysis, and rebuild `cues.json`.

@@ -1,0 +1,53 @@
+{
+  "voice": "Suno speech \"iBow Business OS Tour - Narration (male)\" (6c558553-fbbd-4b23-bbd6-cf8b9f973067), male presenter with its own music bed; this is the script it reads",
+  "stops": [
+    {
+      "stop": 0,
+      "text": "Welcome to iBow Business OS. Ten intelligence modules. One operating system. Let's take a look."
+    },
+    {
+      "stop": 1,
+      "text": "LedgerLogic. Finance intelligence. Invoices, cash flow and reports, all connected, so every decision is backed by real numbers."
+    },
+    {
+      "stop": 2,
+      "text": "DesignForge. Design intelligence. Brand systems, UI assets and campaign visuals, in one design workflow built for business momentum."
+    },
+    {
+      "stop": 3,
+      "text": "MarketPulse. Marketing intelligence. It reads audience signals and trends, and turns them into campaign insights and new growth opportunities."
+    },
+    {
+      "stop": 4,
+      "text": "ClientOrbit. Relationship intelligence. Every lead, every customer journey, every signal, in one orbit, so your accounts keep growing."
+    },
+    {
+      "stop": 5,
+      "text": "PeopleGrid. People intelligence. HR workflows, roles and access, all aligned, with a clear view of how your teams perform."
+    },
+    {
+      "stop": 6,
+      "text": "OpsPilot. Operations intelligence. Tasks, delivery and resources in one execution cockpit, taking operations from chaos to clarity."
+    },
+    {
+      "stop": 7,
+      "text": "RiskRadar. Risk intelligence. It scans for risks, raises alerts and maps out safe paths, before a risk becomes a decision."
+    },
+    {
+      "stop": 8,
+      "text": "SimuPath. Simulation intelligence. Model scenarios, predict outcomes, and choose your strategic path before you commit."
+    },
+    {
+      "stop": 9,
+      "text": "SupportSync. Support intelligence. Tickets, chats and workflows, connected to the whole business, for faster resolutions."
+    },
+    {
+      "stop": 10,
+      "text": "VendorBridge. Vendor intelligence. Suppliers, contracts and approvals, connected, so every delivery stays on track."
+    },
+    {
+      "stop": 11,
+      "text": "Ten modules. One operating system. iBow Business OS. Ready when you are."
+    }
+  ]
+}
