@@ -19,7 +19,7 @@ export const HOLD = 0.04 // tiny hold (fraction of the gap between panel centres
 const COPY_FULL = 0.08  // copy is fully visible while its panel centre is within this many viewport heights
 const COPY_GONE = 0.55  // and fully faded by this distance (about when the dissolve is at its peak)
 
-export const sync = { t: 0, active: 0, freeBottom: 0 }
+export const sync = { t: 0, active: 0, freeBottom: 0, pulse: 0, touring: false } // pulse/touring: set by the music tour
 
 export function startSync(panels) {
   const copies = panels.map((p) => p.querySelector('.copy'))

@@ -14,8 +14,13 @@
 
   <header class="nav">
     <a class="brand" href="#top"><span class="logo-dot"></span>iBow <b>Business OS</b></a>
-    <a class="btn small" href="#contact">Request a demo</a>
+    <div class="nav-actions">
+      <button class="tour-btn" type="button" aria-pressed="false" data-state="off"><span class="tour-icon" aria-hidden="true"></span><span class="tour-label">Play tour</span></button>
+      <a class="btn small" href="#contact">Request a demo</a>
+    </div>
+    <div class="tour-progress" aria-hidden="true"></div>
   </header>
+  <audio id="tour-audio" src="/tour/track.mp3" preload="auto"></audio>
   <nav id="dots" class="dots" aria-label="Modules"></nav>
 
   <main>
@@ -24,7 +29,7 @@
         <span class="label">Business OS</span>
         <h1>Ten intelligence modules. <span class="accent">One operating system.</span></h1>
         <p>Finance, design, marketing, CRM, people, operations, risk, simulation, support and vendors, connected in a single workspace.</p>
-        <div class="row"><a class="btn" href="#ledgerlogic">Explore the modules</a><a class="btn ghost" href="#contact">Request a demo</a></div>
+        <div class="row"><a class="btn" href="#ledgerlogic">Explore the modules</a><a class="btn ghost hero-demo" href="#contact">Request a demo</a><button class="btn ghost tour-btn" type="button" aria-pressed="false" data-state="off"><span class="tour-icon" aria-hidden="true"></span><span class="tour-label">Play tour</span></button></div>
       </div>
       <div class="hint">Scroll</div>
     </section>

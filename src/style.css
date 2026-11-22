@@ -25,6 +25,19 @@ p{color:var(--muted);font-size:18px;margin:0 0 24px}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(56,225,255,.35)}
 .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
 .btn.small{padding:8px 18px;font-size:14px}
+button.btn{font:inherit;font-weight:600;cursor:pointer}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.tour-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:inherit;font-weight:600}
+.nav .tour-btn{padding:8px 14px;font-size:14px;border-radius:10px;color:var(--text);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)}
+.nav .tour-btn:hover{background:rgba(255,255,255,.12)}
+.tour-icon{width:0;height:0;border-left:9px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.tour-btn[data-state=on] .tour-icon{width:9px;height:9px;border:0;background:currentColor;border-radius:1px}
+.tour-btn[data-state=on]{color:var(--live);border-color:var(--live)}
+.tour-progress{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--live);transform:scaleX(0);transform-origin:left;transition:background .4s}
+html.touring{scroll-behavior:auto}
+.tour-btn[hidden]{display:none}
+@media (max-width:899px){.row:has(.tour-btn:not([hidden])) .hero-demo{display:none}}
+@media (max-width:520px){.nav .tour-label{display:none}.nav .tour-btn{padding:9px 11px}.btn.small{padding:8px 12px;font-size:13px}}
 .hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .dots{position:fixed;right:clamp(10px,1.6vw,24px);top:50%;transform:translateY(-50%);z-index:10;display:flex;flex-direction:column;gap:12px}
 .dot-nav{position:relative;width:10px;height:10px;border-radius:50%;background:color-mix(in srgb,var(--c) 40%,transparent);transition:transform .3s,background .3s}

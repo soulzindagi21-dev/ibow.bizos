@@ -30,6 +30,7 @@ const vertex = /* glsl */ `
   uniform float uSize;
   uniform float uPixel;
   uniform vec3 uCols[${N}];
+  uniform float uPulse;
   varying vec3 vColor;
   varying float vAlpha;
 
@@ -82,6 +83,8 @@ const vertex = /* glsl */ `
     vColor = mix(c * 1.12, vec3(1.0), spark * twinkle * 0.7);
     // light sweeps across the logo
     vColor *= 1.0 + lw * 0.35 * sin(uTime * 1.8 - pos.x * 1.6);
+    // beat pulse from the music tour
+    vColor *= 1.0 + 0.6 * uPulse;
     vAlpha = 0.95;
   }
 `
@@ -191,6 +194,7 @@ export async function initScene(mount) {
       uSize: { value: mobile ? 16 : 14 },
       uPixel: { value: renderer.getPixelRatio() },
       uCols: { value: cols },
+      uPulse: { value: 0 },
     },
   })
   const points = new THREE.Points(geo, material)
@@ -242,8 +246,13 @@ export async function initScene(mount) {
     raf = requestAnimationFrame(tick)
     const dt = Math.min(clock.getDelta(), 0.05)
     const elapsed = clock.elapsedTime
-    t += (target() - t) * (1 - Math.exp(-dt * 7))
+    // normal scrolling: ease a little for smoothness; during the music tour follow exactly so
+    // each shape completes right on the downbeat
+    t += (target() - t) * (sync.touring ? 1 : 1 - Math.exp(-dt * 7))
     material.uniforms.uT.value = t
+    // beat pulse decays quickly after each hit
+    sync.pulse *= Math.exp(-dt * 7)
+    material.uniforms.uPulse.value = sync.pulse
     material.uniforms.uTime.value = reduced ? 0 : elapsed
 
     const desktop = width >= 900
@@ -269,7 +278,7 @@ export async function initScene(mount) {
     }
     holder.position.x += (tx - holder.position.x) * (1 - Math.exp(-dt * 3))
     holder.position.y += (ty - holder.position.y) * (1 - Math.exp(-dt * 3))
-    holder.scale.setScalar(sc)
+    holder.scale.setScalar(sc * (1 + 0.035 * sync.pulse))
     if (!reduced) {
       // face the viewer and sway, so every icon stays readable and the logo shows its depth
       const amp = 0.4 - 0.24 * lw

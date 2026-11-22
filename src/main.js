@@ -1,5 +1,6 @@
 import { initScene } from './scene.js'
 import { startSync, sync } from './sync.js'
+import { setupTour } from './tour.js'
 import modules from './modules.json'
 
 const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))
@@ -19,7 +20,14 @@ const dots = modules.map((m, i) =>
 
 document.getElementById('modules').innerHTML = sections
 document.getElementById('dots').innerHTML = dots
-startSync([...document.querySelectorAll('.panel')])
+const panels = [...document.querySelectorAll('.panel')]
+startSync(panels)
+setupTour({
+  audio: document.getElementById('tour-audio'),
+  buttons: [...document.querySelectorAll('.tour-btn')],
+  progress: document.querySelector('.tour-progress'),
+  panels,
+})
 initScene(document.getElementById('scene'))
 
 // Highlight the active module in the side nav and tint the top bar with its colour.
