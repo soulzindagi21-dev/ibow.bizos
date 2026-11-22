@@ -1,4 +1,5 @@
 import { initScene } from './scene.js'
+import { startSync, sync } from './sync.js'
 import modules from './modules.json'
 
 const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))
@@ -18,16 +19,19 @@ const dots = modules.map((m, i) =>
 
 document.getElementById('modules').innerHTML = sections
 document.getElementById('dots').innerHTML = dots
+startSync([...document.querySelectorAll('.panel')])
 initScene(document.getElementById('scene'))
 
 // Highlight the active module in the side nav and tint the top bar with its colour.
 const dotEls = [...document.querySelectorAll('.dot-nav')]
 const root = document.documentElement
 const update = () => {
-  const idx = Math.round(window.scrollY / window.innerHeight)
+  const idx = sync.active
   dotEls.forEach((d) => d.classList.toggle('on', Number(d.dataset.i) === idx))
   const m = modules[idx - 1]
   root.style.setProperty('--live', m ? m.accent : '#38e1ff')
 }
 update()
-window.addEventListener('scroll', update, { passive: true })
+let last = -1
+const loop = () => { if (sync.active !== last) { last = sync.active; update() } requestAnimationFrame(loop) }
+requestAnimationFrame(loop)

@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { BUILDERS, samplePoints } from './shapes.js'
 import modules from './modules.json'
 import logoUrl from './assets/logo.webp'
+import { sync } from './sync.js'
 
 /*
  * One THREE.Points cloud with N shapes: the iBow logo (hero), the 10 module
@@ -136,7 +137,7 @@ async function sampleLogo(count) {
     pos[n * 3 + 2] = (lum - 0.5) * 0.4 + (Math.random() - 0.5) * 0.02
     col[n * 3] = Math.min(r * 1.25, 1); col[n * 3 + 1] = Math.min(g * 1.25, 1); col[n * 3 + 2] = Math.min(b * 1.25, 1)
   }
-  return { pos, col }
+  return { pos, col, aspect: h / w }
 }
 
 /* ---------- scene ---------- */
@@ -166,6 +167,7 @@ export async function initScene(mount) {
     // fall back to a soft dust ball if the image can't be read
     logo = { pos: new Float32Array(count * 3).map(() => (Math.random() - 0.5) * 5), col: new Float32Array(count * 3).fill(0.6) }
   }
+  const logoHeight = LOGO_WIDTH * (logo.aspect || 0.52)
   const shapes = [logo.pos, ...modules.map((m) => samplePoints(BUILDERS[m.glyph](), count)), logo.pos]
 
   const geo = new THREE.BufferGeometry()
@@ -228,8 +230,9 @@ export async function initScene(mount) {
   resize()
   window.addEventListener('resize', resize)
 
-  // Shape index follows the panels: hero = 0, module k = k, final = 11.
-  const target = () => Math.min(Math.max(window.scrollY / window.innerHeight, 0), LAST)
+  // Shape index comes from where the panels actually sit on screen (see sync.js):
+  // whole numbers = a shape fully formed, fractions = particles in flight.
+  const target = () => sync.t
   let t = target()
 
   let running = true, raf = 0
@@ -239,19 +242,36 @@ export async function initScene(mount) {
     raf = requestAnimationFrame(tick)
     const dt = Math.min(clock.getDelta(), 0.05)
     const elapsed = clock.elapsedTime
-    t += (target() - t) * (1 - Math.exp(-dt * 4))
+    t += (target() - t) * (1 - Math.exp(-dt * 7))
     material.uniforms.uT.value = t
     material.uniforms.uTime.value = reduced ? 0 : elapsed
 
     const desktop = width >= 900
-    const tx = desktop ? 2.5 : 0
-    const ty = desktop ? 0 : 1.2
+    const lw = t < 1 ? 1 - t : Math.max(0, t - (LAST - 1)) // 1 while the logo is showing
+    // visible world size at the shape's depth, so we can fit the shape to any screen
+    const visH = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.z
+    const visW = visH * camera.aspect
+    let tx, ty, sc
+    if (desktop) {
+      tx = 2.5; ty = 0; sc = 1.15
+    } else {
+      // phone/tablet: the shape goes in the free band between the top bar and the copy, and is
+      // scaled to fit both the width and that band, so it never collides with the text
+      const ppu = height / visH                                  // CSS px per world unit
+      const top = 70
+      const bottom = Math.max(top + 90, sync.freeBottom - 14)
+      const bandH = bottom - top
+      const iconScale = Math.min(1, (visW * 0.86) / 3.6, bandH / (3.6 * ppu))
+      const logoScale = Math.min((visW * 0.92) / LOGO_WIDTH, bandH / (logoHeight * ppu))
+      sc = iconScale + (logoScale - iconScale) * lw
+      tx = 0
+      ty = (height / 2 - (top + bottom) / 2) / ppu
+    }
     holder.position.x += (tx - holder.position.x) * (1 - Math.exp(-dt * 3))
     holder.position.y += (ty - holder.position.y) * (1 - Math.exp(-dt * 3))
-    holder.scale.setScalar(desktop ? 1.15 : 0.8)
+    holder.scale.setScalar(sc)
     if (!reduced) {
       // face the viewer and sway, so every icon stays readable and the logo shows its depth
-      const lw = t < 1 ? 1 - t : Math.max(0, t - (LAST - 1)) // 1 while the logo is showing
       const amp = 0.4 - 0.24 * lw
       holder.rotation.y = Math.sin(elapsed * 0.6) * amp + pointer.x * (0.3 - 0.18 * lw)
       holder.rotation.x = pointer.y * 0.15
