@@ -1,0 +1,652 @@
+{
+ "source": "Suno audio-analysis, \"iBow Business OS Tour\" take B (de36d50d-e587-4a85-af95-2d265b181a2f)",
+ "bpm": 124,
+ "time_signature": 4,
+ "duration_s": 74.08,
+ "beats": [
+  {
+   "time_s": 0.08906,
+   "bar_position": 1
+  },
+  {
+   "time_s": 0.57357,
+   "bar_position": 2
+  },
+  {
+   "time_s": 1.05815,
+   "bar_position": 3
+  },
+  {
+   "time_s": 1.5435,
+   "bar_position": 4
+  },
+  {
+   "time_s": 2.0281,
+   "bar_position": 1
+  },
+  {
+   "time_s": 2.51319,
+   "bar_position": 2
+  },
+  {
+   "time_s": 2.99806,
+   "bar_position": 3
+  },
+  {
+   "time_s": 3.48246,
+   "bar_position": 4
+  },
+  {
+   "time_s": 3.96744,
+   "bar_position": 1
+  },
+  {
+   "time_s": 4.45179,
+   "bar_position": 2
+  },
+  {
+   "time_s": 4.93717,
+   "bar_position": 3
+  },
+  {
+   "time_s": 5.42231,
+   "bar_position": 4
+  },
+  {
+   "time_s": 5.90612,
+   "bar_position": 1
+  },
+  {
+   "time_s": 6.39127,
+   "bar_position": 2
+  },
+  {
+   "time_s": 6.87538,
+   "bar_position": 3
+  },
+  {
+   "time_s": 7.3591,
+   "bar_position": 4
+  },
+  {
+   "time_s": 7.84317,
+   "bar_position": 1
+  },
+  {
+   "time_s": 8.32692,
+   "bar_position": 2
+  },
+  {
+   "time_s": 8.81073,
+   "bar_position": 3
+  },
+  {
+   "time_s": 9.29458,
+   "bar_position": 4
+  },
+  {
+   "time_s": 9.77873,
+   "bar_position": 1
+  },
+  {
+   "time_s": 10.26292,
+   "bar_position": 2
+  },
+  {
+   "time_s": 10.74671,
+   "bar_position": 3
+  },
+  {
+   "time_s": 11.23112,
+   "bar_position": 4
+  },
+  {
+   "time_s": 11.71471,
+   "bar_position": 1
+  },
+  {
+   "time_s": 12.19862,
+   "bar_position": 2
+  },
+  {
+   "time_s": 12.68265,
+   "bar_position": 3
+  },
+  {
+   "time_s": 13.16635,
+   "bar_position": 4
+  },
+  {
+   "time_s": 13.65075,
+   "bar_position": 1
+  },
+  {
+   "time_s": 14.13388,
+   "bar_position": 2
+  },
+  {
+   "time_s": 14.61813,
+   "bar_position": 3
+  },
+  {
+   "time_s": 15.10221,
+   "bar_position": 4
+  },
+  {
+   "time_s": 15.58634,
+   "bar_position": 1
+  },
+  {
+   "time_s": 16.07083,
+   "bar_position": 2
+  },
+  {
+   "time_s": 16.55481,
+   "bar_position": 3
+  },
+  {
+   "time_s": 17.0395,
+   "bar_position": 4
+  },
+  {
+   "time_s": 17.52331,
+   "bar_position": 1
+  },
+  {
+   "time_s": 18.00762,
+   "bar_position": 2
+  },
+  {
+   "time_s": 18.49167,
+   "bar_position": 3
+  },
+  {
+   "time_s": 18.9755,
+   "bar_position": 4
+  },
+  {
+   "time_s": 19.45931,
+   "bar_position": 1
+  },
+  {
+   "time_s": 19.94288,
+   "bar_position": 2
+  },
+  {
+   "time_s": 20.4266,
+   "bar_position": 3
+  },
+  {
+   "time_s": 20.90973,
+   "bar_position": 4
+  },
+  {
+   "time_s": 21.39325,
+   "bar_position": 1
+  },
+  {
+   "time_s": 21.87692,
+   "bar_position": 2
+  },
+  {
+   "time_s": 22.36083,
+   "bar_position": 3
+  },
+  {
+   "time_s": 22.84425,
+   "bar_position": 4
+  },
+  {
+   "time_s": 23.3282,
+   "bar_position": 1
+  },
+  {
+   "time_s": 23.81175,
+   "bar_position": 2
+  },
+  {
+   "time_s": 24.29564,
+   "bar_position": 3
+  },
+  {
+   "time_s": 24.77969,
+   "bar_position": 4
+  },
+  {
+   "time_s": 25.26285,
+   "bar_position": 1
+  },
+  {
+   "time_s": 25.74669,
+   "bar_position": 2
+  },
+  {
+   "time_s": 26.23073,
+   "bar_position": 3
+  },
+  {
+   "time_s": 26.7151,
+   "bar_position": 4
+  },
+  {
+   "time_s": 27.19852,
+   "bar_position": 1
+  },
+  {
+   "time_s": 27.68288,
+   "bar_position": 2
+  },
+  {
+   "time_s": 28.16742,
+   "bar_position": 3
+  },
+  {
+   "time_s": 28.651,
+   "bar_position": 4
+  },
+  {
+   "time_s": 29.13527,
+   "bar_position": 1
+  },
+  {
+   "time_s": 29.61898,
+   "bar_position": 2
+  },
+  {
+   "time_s": 30.10354,
+   "bar_position": 3
+  },
+  {
+   "time_s": 30.5879,
+   "bar_position": 4
+  },
+  {
+   "time_s": 31.07188,
+   "bar_position": 1
+  },
+  {
+   "time_s": 31.5559,
+   "bar_position": 2
+  },
+  {
+   "time_s": 32.04031,
+   "bar_position": 3
+  },
+  {
+   "time_s": 32.52387,
+   "bar_position": 4
+  },
+  {
+   "time_s": 33.00829,
+   "bar_position": 1
+  },
+  {
+   "time_s": 33.49225,
+   "bar_position": 2
+  },
+  {
+   "time_s": 33.97594,
+   "bar_position": 3
+  },
+  {
+   "time_s": 34.45963,
+   "bar_position": 4
+  },
+  {
+   "time_s": 34.94344,
+   "bar_position": 1
+  },
+  {
+   "time_s": 35.42686,
+   "bar_position": 2
+  },
+  {
+   "time_s": 35.91006,
+   "bar_position": 3
+  },
+  {
+   "time_s": 36.39373,
+   "bar_position": 4
+  },
+  {
+   "time_s": 36.87761,
+   "bar_position": 1
+  },
+  {
+   "time_s": 37.36123,
+   "bar_position": 2
+  },
+  {
+   "time_s": 37.84465,
+   "bar_position": 3
+  },
+  {
+   "time_s": 38.32873,
+   "bar_position": 4
+  },
+  {
+   "time_s": 38.81242,
+   "bar_position": 1
+  },
+  {
+   "time_s": 39.29602,
+   "bar_position": 2
+  },
+  {
+   "time_s": 39.7799,
+   "bar_position": 3
+  },
+  {
+   "time_s": 40.26369,
+   "bar_position": 4
+  },
+  {
+   "time_s": 40.74744,
+   "bar_position": 1
+  },
+  {
+   "time_s": 41.23165,
+   "bar_position": 2
+  },
+  {
+   "time_s": 41.7156,
+   "bar_position": 3
+  },
+  {
+   "time_s": 42.19906,
+   "bar_position": 4
+  },
+  {
+   "time_s": 42.68298,
+   "bar_position": 1
+  },
+  {
+   "time_s": 43.16692,
+   "bar_position": 2
+  },
+  {
+   "time_s": 43.65098,
+   "bar_position": 3
+  },
+  {
+   "time_s": 44.13506,
+   "bar_position": 4
+  },
+  {
+   "time_s": 44.61927,
+   "bar_position": 1
+  },
+  {
+   "time_s": 45.10273,
+   "bar_position": 2
+  },
+  {
+   "time_s": 45.58692,
+   "bar_position": 3
+  },
+  {
+   "time_s": 46.07119,
+   "bar_position": 4
+  },
+  {
+   "time_s": 46.55538,
+   "bar_position": 1
+  },
+  {
+   "time_s": 47.03938,
+   "bar_position": 2
+  },
+  {
+   "time_s": 47.52402,
+   "bar_position": 3
+  },
+  {
+   "time_s": 48.00744,
+   "bar_position": 4
+  },
+  {
+   "time_s": 48.49158,
+   "bar_position": 1
+  },
+  {
+   "time_s": 48.97512,
+   "bar_position": 2
+  },
+  {
+   "time_s": 49.45912,
+   "bar_position": 3
+  },
+  {
+   "time_s": 49.94252,
+   "bar_position": 4
+  },
+  {
+   "time_s": 50.42627,
+   "bar_position": 1
+  },
+  {
+   "time_s": 50.90969,
+   "bar_position": 2
+  },
+  {
+   "time_s": 51.39335,
+   "bar_position": 3
+  },
+  {
+   "time_s": 51.87651,
+   "bar_position": 4
+  },
+  {
+   "time_s": 52.35992,
+   "bar_position": 1
+  },
+  {
+   "time_s": 52.84333,
+   "bar_position": 2
+  },
+  {
+   "time_s": 53.32673,
+   "bar_position": 3
+  },
+  {
+   "time_s": 53.81002,
+   "bar_position": 4
+  },
+  {
+   "time_s": 54.29417,
+   "bar_position": 1
+  },
+  {
+   "time_s": 54.77738,
+   "bar_position": 2
+  },
+  {
+   "time_s": 55.26094,
+   "bar_position": 3
+  },
+  {
+   "time_s": 55.74475,
+   "bar_position": 4
+  },
+  {
+   "time_s": 56.22842,
+   "bar_position": 1
+  },
+  {
+   "time_s": 56.71233,
+   "bar_position": 2
+  },
+  {
+   "time_s": 57.19552,
+   "bar_position": 3
+  },
+  {
+   "time_s": 57.67925,
+   "bar_position": 4
+  },
+  {
+   "time_s": 58.16344,
+   "bar_position": 1
+  },
+  {
+   "time_s": 58.64681,
+   "bar_position": 2
+  },
+  {
+   "time_s": 59.13096,
+   "bar_position": 3
+  },
+  {
+   "time_s": 59.61417,
+   "bar_position": 4
+  },
+  {
+   "time_s": 60.09802,
+   "bar_position": 1
+  },
+  {
+   "time_s": 60.58129,
+   "bar_position": 2
+  },
+  {
+   "time_s": 61.06477,
+   "bar_position": 3
+  },
+  {
+   "time_s": 61.54794,
+   "bar_position": 4
+  },
+  {
+   "time_s": 62.03165,
+   "bar_position": 1
+  },
+  {
+   "time_s": 62.51504,
+   "bar_position": 2
+  },
+  {
+   "time_s": 62.99882,
+   "bar_position": 3
+  },
+  {
+   "time_s": 63.48279,
+   "bar_position": 4
+  },
+  {
+   "time_s": 63.96571,
+   "bar_position": 1
+  },
+  {
+   "time_s": 64.44933,
+   "bar_position": 2
+  },
+  {
+   "time_s": 64.93379,
+   "bar_position": 3
+  },
+  {
+   "time_s": 65.41762,
+   "bar_position": 4
+  },
+  {
+   "time_s": 65.90185,
+   "bar_position": 1
+  },
+  {
+   "time_s": 66.386,
+   "bar_position": 2
+  },
+  {
+   "time_s": 66.86994,
+   "bar_position": 3
+  },
+  {
+   "time_s": 67.35304,
+   "bar_position": 4
+  },
+  {
+   "time_s": 67.83721,
+   "bar_position": 1
+  },
+  {
+   "time_s": 68.32037,
+   "bar_position": 2
+  },
+  {
+   "time_s": 68.80377,
+   "bar_position": 3
+  },
+  {
+   "time_s": 69.28702,
+   "bar_position": 4
+  },
+  {
+   "time_s": 69.76958,
+   "bar_position": 1
+  },
+  {
+   "time_s": 70.25302,
+   "bar_position": 2
+  },
+  {
+   "time_s": 70.73637,
+   "bar_position": 3
+  },
+  {
+   "time_s": 71.2195,
+   "bar_position": 4
+  },
+  {
+   "time_s": 71.70254,
+   "bar_position": 1
+  },
+  {
+   "time_s": 72.18524,
+   "bar_position": 2
+  },
+  {
+   "time_s": 72.66838,
+   "bar_position": 3
+  },
+  {
+   "time_s": 73.15146,
+   "bar_position": 4
+  },
+  {
+   "time_s": 73.63462,
+   "bar_position": 1
+  }
+ ],
+ "sections": [
+  {
+   "start_s": 0,
+   "end_s": 2,
+   "label": "A"
+  },
+  {
+   "start_s": 2,
+   "end_s": 18.08,
+   "label": "B"
+  },
+  {
+   "start_s": 18.08,
+   "end_s": 33.4,
+   "label": "C"
+  },
+  {
+   "start_s": 33.4,
+   "end_s": 50.4,
+   "label": "D"
+  },
+  {
+   "start_s": 50.4,
+   "end_s": 65.96,
+   "label": "D"
+  },
+  {
+   "start_s": 65.96,
+   "end_s": 74.08,
+   "label": "A"
+  }
+ ]
+}

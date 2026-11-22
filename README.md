@@ -12,17 +12,22 @@ The scene lives in `src/scene.js`: each shape is sampled into the same number of
 
 ## Music tour
 
-"Play tour" plays `public/tour/track.mp3` and scrolls the page in time with it: every shape
-finishes forming on a downbeat, loud bars move fast and quiet bars glide, and the particles
-pulse on the beat. Any wheel, touch or key press stops it.
+"Play tour" plays `public/tour/track.mp3` ("iBow Business OS Tour", made in Suno) and scrolls
+the page in time with it: every shape finishes forming on a downbeat, the song's louder bars
+get quick one-bar rushes and its quieter bars two-bar glides, the closing logo lands on the
+song's outro, and the particles pulse on the beat. Any wheel, touch or key press stops it.
 
-To use a new track:
+The beat grid comes from Suno's own analysis of the song (`scripts/suno-analysis.json`: every
+beat with its position in the bar, plus the song's sections). To use a new track:
 
 ```bash
 pip install librosa soundfile
 cp path/to/song.mp3 public/tour/track.mp3
+# with Suno's audio-analysis saved as JSON (recommended):
+python scripts/analyze_beats.py public/tour/track.mp3 src/tour/beats.json --suno path/to/analysis.json
+# or detect the beats from the audio alone:
 python scripts/analyze_beats.py public/tour/track.mp3 src/tour/beats.json
 ```
 
-While `beats.json` is marked `"placeholder": true` (the test click track), the tour buttons are
-hidden; preview it with `?tour` in the URL. Running the script on a real track removes the flag.
+If `beats.json` is marked `"placeholder": true`, the tour buttons are hidden unless the URL has
+`?tour`.

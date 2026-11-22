@@ -14,7 +14,6 @@ import beatMap from './tour/beats.json'
 import { HOLD, sync } from './sync.js'
 
 const TARGET_SECONDS = 60
-const INTRO_BARS = 1
 const OUTRO_BARS = 2
 
 // Moves accelerate INTO the landing downbeat, so the shape snaps together on the beat
@@ -24,37 +23,46 @@ const rush = (x) => x * x * x                                   // loud bars: sh
 const swell = (x) => 0.5 * (1 - Math.cos((Math.PI * x) / 2)) + 0.5 * x * x // quiet bars: gentle swell
 const easeOutQuad = (x) => 1 - (1 - x) * (1 - x)
 
-/** Build the timeline: for each of the 11 moves, when it starts, when it lands (a downbeat), how it eases. */
+/**
+ * Build the timeline: for each of the 11 moves, when it departs, when it lands (always a
+ * downbeat) and how it eases.
+ *
+ * Landings are spread evenly over the bars between the start and the finale. If the beat map
+ * has `finaleAt` (the song's outro), the closing logo lands there and the song plays out on it;
+ * otherwise the tour aims for TARGET_SECONDS and fades the music after a short outro.
+ * A move departs early (a two-bar glide) in the song's quieter bars and late (a one-bar rush)
+ * in its louder ones, measured against the song's own median loudness.
+ */
 export function planTour(map, stops) {
   const db = map.downbeats
   const barDur = db.length > 1 ? (db[db.length - 1] - db[0]) / (db.length - 1) : 2
   const moves = stops - 1
-  const perMove = Math.max(1.5, (TARGET_SECONDS / barDur - INTRO_BARS - OUTRO_BARS) / moves)
-  const energy = (b) => map.barEnergy[Math.min(b, map.barEnergy.length - 1)] ?? 0.5
+  const nearestBar = (t) => db.reduce((best, d, i) => (Math.abs(d - t) < Math.abs(db[best] - t) ? i : best), 0)
+  const finaleBar = map.finaleAt != null
+    ? nearestBar(map.finaleAt)
+    : Math.min(db.length - 1 - OUTRO_BARS, Math.round(TARGET_SECONDS / barDur) - OUTRO_BARS)
 
-  const build = (squeeze) => {
-    const out = []
-    let bar = INTRO_BARS
-    for (let m = 0; m < moves; m++) {
-      const loud = energy(bar) >= 0.5
-      let travel = Math.max(1, Math.round(perMove * (loud ? 0.35 : 0.6)))
-      let dwell = Math.max(1, Math.floor(perMove - travel + 0.25))
-      if (squeeze) { travel = 1; dwell = m % 2 ? 0 : 1 }
-      out.push({ from: m, to: m + 1, startBar: bar, landBar: bar + travel, loud })
-      bar += travel + dwell
-    }
-    return { moves: out, endBar: bar - 1 + OUTRO_BARS }
+  const energy = map.barEnergy.slice(0, finaleBar)
+  const median = [...energy].sort((a, b) => a - b)[Math.floor(energy.length / 2)] ?? 0.5
+  const loudAt = (b) => (map.barEnergy[b] ?? median) >= median
+
+  const out = []
+  let prevLand = 0 // the hero logo is "landed" on the first downbeat
+  for (let m = 0; m < moves; m++) {
+    const land = Math.round(((m + 1) * finaleBar) / moves)
+    const slot = Math.max(1, land - prevLand)
+    const loud = loudAt(land - 1)
+    const travel = Math.min(slot, Math.max(1, Math.round(slot * (loud ? 0.35 : 0.65))))
+    out.push({ from: m, to: m + 1, startBar: land - travel, landBar: land, loud })
+    prevLand = land
   }
-  let plan = build(false)
-  if (plan.endBar >= db.length) plan = build(true) // short track: tighten everything
   const barTime = (b) => (b < db.length ? db[b] : db[db.length - 1] + (b - db.length + 1) * barDur)
-  const moves_ = plan.moves.map((m) => ({
-    ...m,
-    t0: barTime(m.startBar),
-    t1: barTime(m.landBar),
-    ease: m.loud ? rush : swell,
-  }))
-  return { moves: moves_, end: Math.min(barTime(plan.endBar), map.duration), barDur }
+  return {
+    moves: out.map((m) => ({ ...m, t0: barTime(m.startBar), t1: barTime(m.landBar), ease: m.loud ? rush : swell })),
+    end: map.finaleAt != null ? map.duration - 0.05 : Math.min(barTime(finaleBar + OUTRO_BARS), map.duration),
+    barDur,
+    naturalEnd: map.finaleAt != null,
+  }
 }
 
 export function setupTour({ audio, buttons, progress, panels }) {
@@ -155,7 +163,7 @@ export function setupTour({ audio, buttons, progress, panels }) {
     setUi(false)
     if (progress) progress.style.transform = 'scaleX(0)'
     // fade the music out rather than cutting it
-    const v0 = audio.volume, t0 = performance.now(), len = finished ? 1500 : 500
+    const v0 = audio.volume, t0 = performance.now(), len = finished ? (plan.naturalEnd ? 200 : 1500) : 500
     const fade = () => {
       const k = Math.min(1, (performance.now() - t0) / len)
       audio.volume = v0 * (1 - k)
