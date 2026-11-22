@@ -59,7 +59,7 @@ const vertex = /* glsl */ `
     int i = int(floor(uT));
     int j = int(min(float(i + 1), ${LAST}.0));
     float f = fract(uT);
-    float k = smoothstep(0.0, 1.0, clamp((f - aRand * 0.3) / 0.7, 0.0, 1.0));
+    float k = smoothstep(0.0, 1.0, clamp((f - aRand * 0.2) / 0.8, 0.0, 1.0));
 
     vec3 a = pick(i);
     vec3 b = pick(j);

@@ -1,6 +1,6 @@
 :root{--bg:#070b16;--accent:#38e1ff;--text:#eaf1ff;--muted:#9fb4d4;--live:#38e1ff}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
 #scene{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(ellipse 55% 50% at 72% 45%,color-mix(in srgb,var(--live) 14%,transparent),transparent 70%),var(--bg);transition:background .6s}
@@ -10,7 +10,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui
 .brand b{color:var(--live);transition:color .4s}
 .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 12px var(--live);transition:background .4s}
 main{position:relative;z-index:1}
-.panel{position:relative;min-height:100vh;min-height:100svh;scroll-snap-align:center;display:flex;align-items:center;padding:110px clamp(20px,6vw,96px) 80px}
+.panel{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:110px clamp(20px,6vw,96px) 80px}
 .copy{max-width:540px;will-change:opacity,transform}
 .label{display:block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--c);margin-bottom:14px}
 h1,h2{line-height:1.08;margin:0 0 18px;font-weight:800;letter-spacing:-.02em}

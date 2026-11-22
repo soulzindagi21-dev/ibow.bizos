@@ -5,18 +5,19 @@
  * browser toolbar changes the viewport height), we measure where each panel actually
  * sits on screen. The panel whose centre is nearest the viewport centre "owns" the scene:
  *
- *   - while a panel is centred (within HOLD of its centre) its shape is fully formed, no
- *     particle is in motion, and its copy is fully visible;
- *   - between two panels the shape dissolves into particles and re-forms as the next shape,
- *     while the copy of the leaving panel fades out and the next one fades in.
+ *   - the animation follows the scroll continuously: moving from one panel centre to the next
+ *     takes the shape from fully formed, through a dissolve, to fully formed as the next shape,
+ *     in step with how far you have scrolled (no dead zones, no snapping);
+ *   - only a very small hold either side of a panel centre keeps the finished shape steady;
+ *   - the copy fades in as its shape forms and out as it dissolves.
  */
 
 const clamp = (x, a, b) => Math.min(Math.max(x, a), b)
 const smooth = (x) => x * x * (3 - 2 * x)
 
-export const HOLD = 0.2 // fraction of the gap between panel centres that the shape stays fully formed
-const COPY_FULL = 0.3   // copy is fully visible while its panel centre is within this many viewport heights
-const COPY_GONE = 0.6   // and fully faded by this distance
+export const HOLD = 0.04 // tiny hold (fraction of the gap between panel centres) so a finished shape is steady
+const COPY_FULL = 0.08  // copy is fully visible while its panel centre is within this many viewport heights
+const COPY_GONE = 0.55  // and fully faded by this distance (about when the dissolve is at its peak)
 
 export const sync = { t: 0, active: 0, freeBottom: 0 }
 
@@ -37,7 +38,7 @@ export function startSync(panels) {
     let t = k
     if (k < centres.length - 1) {
       const frac = (vc - centres[k]) / (centres[k + 1] - centres[k])
-      t = k + smooth(clamp((frac - HOLD) / (1 - 2 * HOLD), 0, 1))
+      t = k + clamp((frac - HOLD) / (1 - 2 * HOLD), 0, 1) // linear: progress matches scroll distance
     }
     sync.t = t
     sync.active = Math.round(t)
